@@ -74,3 +74,10 @@ def order_send_sell():
             price_type=PriceType.PRICE_TYPE_CURRENCY
         )
     print(r)
+
+
+def get_orders():
+    with Client(TOKEN) as client:
+        orders = client.orders.get_orders(account_id='2166394631')
+        print(orders)
+    return orders
