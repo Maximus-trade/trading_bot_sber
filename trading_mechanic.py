@@ -1,11 +1,13 @@
 import get_candles
 import get_portfolio
+import timing_exchange
 from _datetime import datetime
 import time
 from tinkoff.invest import Client, OrderDirection, OrderType, Quotation, TimeInForceType, PriceType, OperationType
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
 TOKEN = os.getenv('TOKEN')
 print('input the interval')
 b = int(input())
@@ -23,9 +25,8 @@ INSTRUMENT = 'e6123145-9665-43e0-8413-cd61b8aa9b13'
 #get_candles.main()
 
 
-
-a = True
-while a:
+while True:
+    timing_exchange.is_within_time_range()
     time.sleep(b)
     get_candles.last_price()
     ops_list = get_candles.get_orders()

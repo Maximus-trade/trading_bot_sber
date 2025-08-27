@@ -1,4 +1,5 @@
 import time
+import uuid
 from _datetime import datetime
 from datetime import timedelta
 from tinkoff.invest import CandleInterval, Client, Quotation, OrderDirection, TimeInForceType, PriceType, OrderType, \
@@ -41,7 +42,7 @@ def last_price():
 def order_send():
     with Client(TOKEN) as client:
         r = client.orders.post_order(
-            order_id=str(datetime.utcnow().timestamp()),
+            order_id = str(uuid.uuid4()),
             instrument_id=INSTRUMENT,
             price=Quotation(units=rub, nano=kop),
             quantity=1,
@@ -63,7 +64,7 @@ print(rub)
 def order_send_sell():
     with Client(TOKEN) as client:
         r = client.orders.post_order(
-            order_id=str(datetime.utcnow().timestamp()),
+            order_id = str(uuid.uuid4()),
             instrument_id=INSTRUMENT,
             price=Quotation(units=rub, nano=kop),
             quantity=1,

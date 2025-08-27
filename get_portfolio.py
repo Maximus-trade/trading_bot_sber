@@ -1,13 +1,11 @@
 import time
 from datetime import timedelta
 from typing import List, Any
-
 from tinkoff.invest import CandleInterval, Client, InstrumentRequest, OperationsRequest, OperationState
 from tinkoff.invest.services import InstrumentsService, MarketDataService, OperationsService
 from tinkoff.invest.utils import now
 import os
 from dotenv import load_dotenv
-
 import get_portfolio
 
 global r
