@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
-FIGI = "TCS00A1039N1"
+FIGI = "TCS00A107T19"
 
 with Client(TOKEN) as client:
 
