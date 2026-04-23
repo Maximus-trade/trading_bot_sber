@@ -1,13 +1,11 @@
 import time
 from datetime import timedelta
 from typing import List, Any
-
 from tinkoff.invest import CandleInterval, Client, InstrumentRequest, OperationsRequest, OperationState
 from tinkoff.invest.services import InstrumentsService, MarketDataService, OperationsService
 from tinkoff.invest.utils import now
 import os
 from dotenv import load_dotenv
-
 import get_portfolio
 
 global r
@@ -20,7 +18,7 @@ YDEX = 'BBG0047' #YDEX
 
 def get_portf():
     with Client(TOKEN) as client:
-        r = client.operations.get_portfolio(account_id='2166394631')
+        r = client.operations.get_portfolio(account_id='your_acc_id')
     print(r)
 
 get_portf()
@@ -38,7 +36,7 @@ def get_ops():
     ops = []
     with Client(TOKEN) as client:
         t = client.operations.get_operations(
-            account_id='2166394631',
+            account_id='your_acc_id',
             from_=now() - timedelta(days=50),
             to=now(),
             state=OperationState.OPERATION_STATE_EXECUTED,
