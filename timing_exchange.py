@@ -1,21 +1,22 @@
 from datetime import datetime, time
 import time as time_module
 
-
 def is_within_time_range():
     current_time = datetime.now().time()
 
-    # Создаем объекты времени через конструктор time() из datetime
-    if (current_time >= time(23, 48, 50) or
-            current_time <= time(7, 1, 30)):
-        print('no trade')
-        time_module.sleep(25960)
+    # Временные диапазоны
+    ranges = [
+        (time(23, 48, 50), time(7, 1, 30)),
+        (time(18, 38, 50), time(19, 5, 30))
+    ]
 
-    elif (current_time >= time(18, 38, 50) and
-          current_time <= time(19, 5, 30)):
-        print('no trade')
-        time_module.sleep(1600)
+    # Проверка текущего времени
+    for start, end in ranges:
+        if (start <= end and start <= current_time <= end) or \
+           (start > end and (current_time >= start or current_time <= end)):
+            print('no trade')
+            sleep_duration = 25960 if start == time(23, 48, 50) else 1600
+            time_module.sleep(sleep_duration)
+            return
 
-    else:
-        print('___________trade_time___________')
-
+    print('___________trade_time___________')

@@ -8,6 +8,7 @@ from tinkoff.invest.services import InstrumentsService, MarketDataService
 from tinkoff.invest.utils import now
 import os
 from dotenv import load_dotenv
+import core_mechanic
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
@@ -82,3 +83,5 @@ def get_orders():
         orders = client.orders.get_orders(account_id='2166394631')
         print(orders)
     return orders
+
+get_orders()
